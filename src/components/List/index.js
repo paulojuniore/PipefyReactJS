@@ -1,8 +1,8 @@
 import React from 'react';
-
 import { MdAdd } from 'react-icons/md';
-
 import { Container } from './styles';
+
+import Card from '../Card/index';
 
 export default function List() {
     return (
@@ -13,6 +13,13 @@ export default function List() {
                     <MdAdd size={24} color="#FFF" />
                 </button>
             </header>
+
+            <ul>
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+            </ul>
         </Container>
     );
 }
