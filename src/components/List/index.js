@@ -17,7 +17,17 @@ export default function List({ data, index: listIndex }) {
             </header>
 
             <ul>
-                { data.cards.map((card, index) => <Card key={card.id} data={card} index={index} listIndex={listIndex} />) }
+                { 
+                    data.cards.map((card, index) => {
+                        return (
+                            <Card 
+                                key={card.id} 
+                                data={card} 
+                                index={index} 
+                                listIndex={listIndex} />
+                        )
+                    })
+                }
             </ul>
         </Container>
     );

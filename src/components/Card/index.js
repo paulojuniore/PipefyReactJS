@@ -11,7 +11,12 @@ export default function Card({ data, index, listIndex }) {
     const ref = useRef();
 
     const [{ isDragging }, dragRef] = useDrag({
-        item: { type: 'CARD', id: data.id, index, listIndex, content: data.content },
+        item: { type: 'CARD', 
+                id: data.id, 
+                index, 
+                listIndex, 
+                content: data.content 
+        },
         collect: monitor => ({
             isDragging: monitor.isDragging(),
         })
@@ -25,17 +30,23 @@ export default function Card({ data, index, listIndex }) {
 
             const draggedIndex = item.index;
             const targetIndex = index;
-            if(draggedIndex === targetIndex && draggedListIndex === targetListIndex){
+            if(draggedIndex === targetIndex && 
+                draggedListIndex === targetListIndex){
                 return;
             }
             
             // obtém o tamanho do container
             const targetSize = ref.current.getBoundingClientRect();
-            // calcula o pixel central vertical do card que está sendo passado por cima
+
+            /* calcula o pixel central vertical do card que está sendo passado
+            por cima */
             const targetCenter = (targetSize.bottom - targetSize.top) / 2;
+
             // obtém a distância dos pontos do item que foram arrastados
             const draggedOffset = monitor.getClientOffset();
-            // obtém a diferença entre o que foi arrastado do card verticalmente e a distância total do topo.
+
+            /* obtém a diferença entre o que foi arrastado do card verticalmente
+            e a distância total do topo. */
             const draggedTop = draggedOffset.y - targetSize.top;
             
             if(draggedIndex < targetIndex && draggedTop < targetCenter){
