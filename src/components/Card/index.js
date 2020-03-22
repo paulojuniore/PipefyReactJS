@@ -25,7 +25,7 @@ export default function Card({ data, index, listIndex }) {
 
             const draggedIndex = item.index;
             const targetIndex = index;
-            if(draggedIndex === targetIndex){
+            if(draggedIndex === targetIndex && draggedListIndex === targetListIndex){
                 return;
             }
             
@@ -45,9 +45,10 @@ export default function Card({ data, index, listIndex }) {
                 return;
             }
 
-            move(draggedListIndex, draggedIndex, targetIndex);
+            move(draggedListIndex, targetListIndex, draggedIndex, targetIndex);
 
             item.index = targetIndex;
+            item.listIndex = targetListIndex;
         }
     });
 
